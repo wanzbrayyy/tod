@@ -1,13 +1,12 @@
 const TelegramBot = require('node-telegram-bot-api');
 
-// KONFIGURASI
 const TOKEN = '8277826531:AAHE7hJRuPSoDhdQ1CDB_ce0riZIxSYirhE';
 const OPENROUTER_API_KEY = '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';
 const MODEL_NAME = "nex-agi/deepseek-v3.1-nex-n1:free";
 
-const bot = new TelegramBot(TOKEN);
+// PENTING: polling harus false untuk Vercel/Webhook
+const bot = new TelegramBot(TOKEN, { polling: false });
 
-// SYSTEM PROMPT PERSONA
 const SYSTEM_PROMPT = `
 Identity: Kamu adalah 'wanzbrayyy truth', bot host Truth or Dare yang asik, tengil, dan gaul.
 Language: Indonesia gaul (lo-gue).
@@ -30,8 +29,6 @@ const keyboardMarkup = {
     ]
 };
 
-// FUNGSI API (PENGGANTI LIBRARY OPENAI)
-// Ini murni menggunakan fetch sesuai curl yang Anda kirim
 async function fetchOpenRouter(userContent) {
     try {
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
@@ -50,31 +47,33 @@ async function fetchOpenRouter(userContent) {
         });
 
         const data = await response.json();
-        
-        if (data.choices && data.choices.length > 0) {
-            return data.choices[0].message.content;
-        } else {
-            console.error("API Response Error:", data);
-            return "Waduh, API-nya lagi ngelag bray. Coba lagi!";
-        }
+        return data.choices?.[0]?.message?.content || "Lagi error nih, coba lagi bray!";
     } catch (error) {
         console.error("Fetch Error:", error);
         return "Otak gue putus koneksi bray. Coba lagi!";
     }
 }
 
-// FORMATTER (KUTIP & MARKDOWN V2)
 function formatMsg(text) {
-    // Membungkus teks dengan ``` (code block) agar rapi dan style kutip
     return "```\n" + text + "\n```";
 }
 
-// LOGIC UTAMA (VERCEL HANDLER)
+// LOGIC HANDLER UTAMA
 module.exports = async (req, res) => {
     try {
+        // 1. CEK KONEKSI (Supaya gak 404 pas dibuka di browser)
+        if (req.method === 'GET') {
+            return res.status(200).send('Bot is Online! Wanzbrayyy is ready.');
+        }
+
+        // 2. PARSE BODY DARI TELEGRAM
         const body = req.body;
 
-        // 1. COMMAND START
+        if (!body) {
+            return res.status(400).send('No body provided');
+        }
+
+        // --- COMMAND: START ---
         if (body.message && body.message.text === '/start') {
             const chatId = body.message.chat.id;
             const welcome = "Woy bray! Gue wanzbrayyy truth.\nSiap main Truth or Dare? Pilih nasib lo di bawah!";
@@ -85,7 +84,7 @@ module.exports = async (req, res) => {
             });
         }
         
-        // 2. CHAT BIASA (AI RESPONSE)
+        // --- TEXT BIASA (CHAT AI) ---
         else if (body.message && body.message.text && !body.message.text.startsWith('/')) {
             const chatId = body.message.chat.id;
             await bot.sendChatAction(chatId, 'typing');
@@ -98,14 +97,15 @@ module.exports = async (req, res) => {
             });
         }
 
-        // 3. CALLBACK QUERY (TOMBOL)
+        // --- TOMBOL CALLBACK ---
         else if (body.callback_query) {
             const queryId = body.callback_query.id;
             const chatId = body.callback_query.message.chat.id;
             const messageId = body.callback_query.message.message_id;
             const data = body.callback_query.data;
 
-            await bot.answerCallbackQuery(queryId, { text: 'Bentar bray...' });
+            // Jangan await di sini agar tidak timeout, tapi wajib answerCallback
+            bot.answerCallbackQuery(queryId, { text: 'Sabar bray...' }).catch(() => {});
 
             let prompt = "";
             if (data === 'action_truth') prompt = "Kasih pertanyaan Truth yang jujur, pedes, atau rahasia.";
@@ -113,13 +113,13 @@ module.exports = async (req, res) => {
             if (data === 'action_random') prompt = "Pilih acak Truth atau Dare dan kasih tantangannya.";
             
             if (data === 'action_chat') {
-                 await bot.sendMessage(chatId, formatMsg("Ketik aja curhatan lo atau apa gitu, ntar gue bales bray!"), {
+                 await bot.sendMessage(chatId, formatMsg("Ketik aja curhatan lo, ntar gue bales bray!"), {
                     parse_mode: 'MarkdownV2'
                 });
             } else if (prompt) {
                 const aiResponse = await fetchOpenRouter(prompt);
                 
-                // Edit pesan lama dengan respon baru
+                // Gunakan try-catch untuk editMessage karena sering error jika konten sama
                 try {
                     await bot.editMessageText(formatMsg(aiResponse), {
                         chat_id: chatId,
@@ -128,7 +128,6 @@ module.exports = async (req, res) => {
                         reply_markup: keyboardMarkup
                     });
                 } catch (e) {
-                    // Jika gagal edit (misal pesan sama), kirim baru
                     await bot.sendMessage(chatId, formatMsg(aiResponse), {
                         parse_mode: 'MarkdownV2',
                         reply_markup: keyboardMarkup
@@ -137,9 +136,11 @@ module.exports = async (req, res) => {
             }
         }
 
+        // Akhiri request dari Telegram
         res.status(200).send('OK');
+
     } catch (error) {
-        console.error(error);
+        console.error("Handler Error:", error);
         res.status(500).send('Error');
     }
 };
