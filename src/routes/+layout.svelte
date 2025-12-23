@@ -1,31 +1,32 @@
-<svelte:head>
-    <title>REST API Documentation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
-</svelte:head>
-
 <slot />
 
 <style :global>
     :root {
-        --bg-primary: #0f172a;
-        --bg-secondary: #1e293b;
-        --text-primary: #f8fafc;
-        --text-secondary: #94a3b8;
-        --accent: #38bdf8;
-        --border: #334155;
-        --method-get: #0ea5e9;
-        --method-post: #10b981;
+        --bg-main: #09090b;
+        --bg-panel: #18181b;
+        --border: #27272a;
+        --accent: #6366f1;
+        --accent-glow: rgba(99, 102, 241, 0.15);
+        --text-main: #f4f4f5;
+        --text-muted: #a1a1aa;
+        --success: #10b981;
+        --info: #3b82f6;
+        --font-ui: 'Inter', sans-serif;
+        --font-code: 'JetBrains Mono', monospace;
     }
 
     body {
         margin: 0;
-        padding: 0;
-        font-family: 'Inter', sans-serif;
-        background-color: var(--bg-primary);
-        color: var(--text-primary);
-        -webkit-font-smoothing: antialiased;
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        font-family: var(--font-ui);
+        -webkit-tap-highlight-color: transparent;
+        overflow-x: hidden;
     }
 
     * { box-sizing: border-box; }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-main); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 </style>
