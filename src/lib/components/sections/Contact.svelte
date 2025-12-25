@@ -61,7 +61,7 @@
 				<span class="text-xl font-bold text-slate-900">Awan<span class="text-sky-500">.</span></span>
 			</div>
 			<p class="text-sm text-slate-400">
-				&copy; {currentYear} Awan Berlian. Dibuat dengan SvelteKit & Tailwind.
+				&copy; {currentYear} Awan Berlian😌
 			</p>
 		</div>
 	</div>

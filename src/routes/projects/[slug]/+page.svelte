@@ -14,7 +14,7 @@
         { label: "Timeline", value: "4 Weeks" },
         { label: "Role", value: "Frontend & UI" },
         { label: "Client", value: "Tech Corp Inc." },
-        { label: "Year", value: "2024" }
+        { label: "Year", value: "2025" }
     ];
 </script>
 

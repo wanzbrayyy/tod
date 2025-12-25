@@ -1,7 +1,7 @@
 <script>
 	const skills = [
-		"Svelte & SvelteKit", "React.js", "TypeScript", "Tailwind CSS", 
-		"Node.js", "Figma", "UI/UX Design", "Git Workflow", "Vercel"
+		"Svelte & SvelteKit", "Java", "kotlin", "Tailwind CSS", 
+		"Node.js", "Figma", "UI/UX Design", "Git Workflow", "rust"
 	];
 </script>
 

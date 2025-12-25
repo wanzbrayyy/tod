@@ -1,7 +1,7 @@
 <script>
     const stack = [
-        "SvelteKit", "TypeScript", "TailwindCSS", "Node.js", "React Native", "Figma", 
-        "Vercel", "Supabase", "Docker", "GraphQL", "Next.js", "Stripe"
+        "SvelteKit", "TypeScript", "TailwindCSS", "Node.js", "React Native", "java", 
+        "rust", "Supabase", "Docker", "GraphQL", "Next.js", "Stripe"
     ];
     const items = [...stack, ...stack, ...stack, ...stack]; 
     

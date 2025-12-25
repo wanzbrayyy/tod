@@ -2,9 +2,9 @@
     import SectionTitle from '$lib/components/ui/SectionTitle.svelte';
     
     const posts = [
-        { title: "Masa Depan SvelteKit di 2025", date: "20 Dec 2024", read: "5 min", img: "/images/blog-1.jpg" },
-        { title: "Tips UI Minimalis Tanpa Membosankan", date: "15 Nov 2024", read: "3 min", img: "/images/blog-2.jpg" },
-        { title: "Kenapa Saya Meninggalkan Redux", date: "01 Oct 2024", read: "7 min", img: "/images/blog-3.jpg" }
+        { title: "Masa Depan SvelteKit di 2025", date: "20 Dec 2025", read: "5 min", img: "/images/blog-1.jpg" },
+        { title: "Tips UI Minimalis Tanpa Membosankan", date: "15 Nov 2025", read: "3 min", img: "/images/blog-2.jpg" },
+        { title: "Kenapa Saya Meninggalkan Redux", date: "01 Oct 2025", read: "7 min", img: "/images/blog-3.jpg" }
     ];
 </script>
 
