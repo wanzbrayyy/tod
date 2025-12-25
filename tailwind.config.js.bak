@@ -1,18 +1,11 @@
-/** @type {import('tailwindcss').Config} */
+
 export default {
-	// Wajib ditambahkan agar tombol toggle dark mode berfungsi manual
-	darkMode: 'class', 
-	
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
 			fontFamily: {
 				sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 			},
-            // Animasi tambahan untuk loading/spinner
-            animation: {
-                'spin-slow': 'spin 3s linear infinite',
-            },
 			colors: {
 				primary: {
 					50: '#f0f9ff',
@@ -41,8 +34,5 @@ export default {
 			}
 		}
 	},
-	plugins: [
-        // Plugin ini penting agar text blog (prose) rapi otomatis
-        require('@tailwindcss/typography'),
-    ]
+	plugins: []
 };
