@@ -1,25 +1,31 @@
 [
 	{
 		"id": 1,
-		"title": "sistem Manajemen Aset",
-		"category": "web application",
-		"description": "platform berbasis cloud untuk pelacakan aset perusahaan secara real-time dengan dashboard analitik.",
+		"slug": "sistem-manajemen-aset",
+		"title": "Sistem Manajemen Aset",
+		"category": "Web Application",
+		"description": "Platform berbasis cloud untuk pelacakan aset perusahaan secara real-time dengan dashboard analitik.",
+		"content": "<p>Proyek ini bertujuan untuk menyelesaikan masalah kehilangan aset di gudang besar. Menggunakan RFID integration dan dashboard realtime.</p><h3>Teknologi</h3><ul><li>SvelteKit</li><li>Supabase</li><li>Chart.js</li></ul>",
 		"image": "/images/projects/project-1-thumb.jpg",
 		"link": "#"
 	},
 	{
 		"id": 2,
-		"title": "aplikasi finansial pribadi",
-		"category": "mobile UI/UX",
-		"description": "desain antarmuka aplikasi pencatatan keuangan dengan fokus pada kemudahan penggunaan dan visualisasi data.",
+		"slug": "aplikasi-finansial",
+		"title": "Aplikasi Finansial Pribadi",
+		"category": "Mobile UI/UX",
+		"description": "Desain antarmuka aplikasi pencatatan keuangan dengan fokus pada kemudahan penggunaan dan visualisasi data.",
+		"content": "<p>Fokus utama adalah UX yang frictionless agar pengguna rajin mencatat pengeluaran. Desain menggunakan pendekatan Clean UI.</p>",
 		"image": "/images/projects/project-2-thumb.jpg",
 		"link": "#"
 	},
 	{
 		"id": 3,
-		"title": "landing page perusahaan",
-		"category": "frontend development",
-		"description": "website profil perusahaan modern dengan animasi halus dan performa tinggi menggunakan Svelte.",
+		"slug": "landing-page-corp",
+		"title": "Landing Page Perusahaan",
+		"category": "Frontend Development",
+		"description": "Website profil perusahaan modern dengan animasi halus dan performa tinggi menggunakan Svelte.",
+		"content": "<p>Redesign total website korporat untuk meningkatkan konversi dan brand image. Score Lighthouse mencapai 100.</p>",
 		"image": "/images/projects/project-3-thumb.jpg",
 		"link": "#"
 	}

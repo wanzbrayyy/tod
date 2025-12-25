@@ -15,13 +15,15 @@
 		
 		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 			{#each projects as project (project.id)}
-				<Card 
-					title={project.title} 
-					category={project.category} 
-					image={project.image}
-				>
-					{project.description}
-				</Card>
+                <a href="/projects/{project.slug}" class="block">
+                    <Card 
+                        title={project.title} 
+                        category={project.category} 
+                        image={project.image}
+                    >
+                        {project.description}
+                    </Card>
+                </a>
 			{/each}
 		</div>
 

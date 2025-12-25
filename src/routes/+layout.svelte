@@ -6,15 +6,14 @@
     import SpotifyWidget from '$lib/components/ui/SpotifyWidget.svelte';
     import SearchModal from '$lib/components/ui/SearchModal.svelte';
     import CookieBanner from '$lib/components/ui/CookieBanner.svelte';
+    import ScrollProgress from '$lib/components/ui/ScrollProgress.svelte';
 
     onMount(() => {
-        console.log(
-            "%c Halo Developer! 👋 \n%cTertarik dengan kode sumber website ini? \nKontak saya untuk kolaborasi!", 
-            "color: #0ea5e9; font-size: 24px; font-weight: bold;", 
-            "color: #64748b; font-size: 14px;"
-        );
+        console.log("%c Crafted by Awan Berlian ", "background: #0f172a; color: #fff; padding: 8px; border-radius: 4px; font-weight: bold;");
     });
 </script>
+
+<ScrollProgress />
 
 <div class="relative flex min-h-screen flex-col bg-slate-50 text-slate-900 font-sans selection:bg-sky-200 selection:text-sky-900">
 	<Navbar />
@@ -23,7 +22,6 @@
 		<slot />
 	</main>
 
-    <!-- Global Fixed Widgets -->
     <Toast />
     <SpotifyWidget />
     <SearchModal />

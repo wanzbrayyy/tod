@@ -40,9 +40,19 @@
 
 <nav class={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/80 backdrop-blur-md border-b border-slate-200/50 py-3 shadow-sm' : 'bg-transparent py-6'}`}>
     <div class="container mx-auto flex items-center justify-between px-6 lg:px-12">
-        <a href="/" class="relative z-50 text-2xl font-bold tracking-tight text-slate-900">
-            Awan<span class="text-sky-500">.</span>
-        </a>
+        <div class="flex items-center gap-4">
+            <a href="/" class="relative z-50 text-2xl font-bold tracking-tight text-slate-900">
+                Awan<span class="text-sky-500">.</span>
+            </a>
+            
+            <div class="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white/50 px-3 py-1 backdrop-blur-sm">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Available for Work</span>
+            </div>
+        </div>
 
         <div class="hidden md:flex items-center space-x-8">
             {#each navLinks as link}
@@ -117,13 +127,7 @@
                     {$language}
                 </button>
             </div>
-
-            <a 
-                href="/resume.pdf" 
-                class="inline-flex w-full justify-center rounded-xl bg-slate-900 py-4 text-center font-bold text-white"
-            >
-                Download Resume
-            </a>
+             <a href="/resume.pdf" class="inline-flex w-full justify-center rounded-xl bg-slate-900 py-4 text-center font-bold text-white">Download Resume</a>
         </div>
     </div>
 </nav>
