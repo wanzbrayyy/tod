@@ -26,10 +26,10 @@
 				
 				<div class="space-y-6 text-lg text-slate-600 leading-relaxed">
 					<p>
-						Perjalanan saya dalam dunia digital dimulai dari rasa penasaran bagaimana sebuah baris kode bisa berubah menjadi interaksi visual yang memukau. Dengan latar belakang desain grafis dan ilmu komputer, saya menjembatani kesenjangan antara estetika dan teknis.
+						perjalanan saya dalam dunia digital dimulai dari rasa penasaran bagaimana sebuah baris kode bisa berubah menjadi interaksi visual yang memukau. Dengan latar belakang desain grafis dan ilmu komputer, saya menjembatani kesenjangan antara estetika dan teknis.
 					</p>
 					<p>
-						Saya percaya bahwa "Less is More". Dalam setiap proyek, saya berusaha menghilangkan elemen yang tidak perlu untuk menonjolkan fungsi utama tanpa mengorbankan keindahan visual.
+						saya percaya bahwa "less is more". dalam setiap proyek, saya berusaha menghilangkan elemen yang tidak perlu untuk menonjolkan fungsi utama tanpa mengorbankan keindahan visual.
 					</p>
 				</div>
 

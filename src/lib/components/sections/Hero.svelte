@@ -17,12 +17,11 @@
 				
 				<h1 class="mb-8 text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.1] sm:text-6xl xl:text-7xl">
 					Menciptakan <br />
-					<span class="bg-gradient-to-r from-sky-500 to-sky-300 bg-clip-text text-transparent">Digital Experience</span>
-					yang Modern.
+					<span class="bg-gradient-to-r from-sky-500 to-sky-300 bg-clip-text text-transparent">digital experience</span>
 				</h1>
 				
 				<p class="mb-10 text-lg leading-relaxed text-slate-600 sm:text-xl max-w-lg">
-					Halo, saya Awan Berlian. Frontend Developer dan UI Designer yang berfokus pada performa, estetika minimalis, dan pengalaman pengguna yang intuitif.
+					Halo, saya Awan Berlian. backend dan frontend developer hingga cyber security yang berfokus pada performa, estetika minimalis, dan pengalaman pengguna yang intuitif.
 				</p>
 				
 				<div class="flex flex-wrap gap-4">
