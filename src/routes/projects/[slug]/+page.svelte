@@ -92,7 +92,7 @@
                     <!-- Share / Mini Contact -->
                     <div class="rounded-2xl border border-slate-200 dark:border-white/10 p-6 bg-slate-50 dark:bg-white/5 text-center">
                         <p class="text-sm font-medium text-slate-600 dark:text-slate-400 mb-4">Suka dengan proyek ini?</p>
-                        <a href="mailto:halo@awanberlian.com" class="text-sky-500 font-bold hover:underline">
+                        <a href="wanzofc.tech@gmail.com" class="text-sky-500 font-bold hover:underline">
                             Ajak saya berkolaborasi <i class="fa-regular fa-handshake ml-1"></i>
                         </a>
                     </div>
