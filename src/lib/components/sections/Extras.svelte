@@ -6,20 +6,22 @@
     let showResume = false;
     let showVideo = false;
 
-    // Dummy Github contribution data visuals
     const weeks = Array(52).fill(0).map(() => Array(7).fill(0).map(() => Math.random() > 0.7 ? Math.floor(Math.random() * 4) : 0));
     
     const colors = ['bg-slate-100', 'bg-sky-200', 'bg-sky-400', 'bg-sky-600', 'bg-sky-800'];
 
     const copyCode = () => {
-        navigator.clipboard.writeText(`console.log("Hello World");`);
+        navigator.clipboard.writeText(`const portfolio = new Awesome();
+portfolio.init({
+  design: "Modern Z",
+  performance: "100%"
+});`);
         showToast("Kode berhasil disalin!", "success");
     };
 </script>
 
 <section class="py-24 bg-slate-50 border-t border-slate-200">
     <div class="container mx-auto px-6 lg:px-12 grid gap-12 lg:grid-cols-2">
-        <!-- Column 1: Code & Github -->
         <div class="space-y-8">
             <div>
                 <h3 class="mb-4 text-lg font-bold text-slate-900 flex items-center gap-2">
@@ -47,14 +49,13 @@
                     <button class="text-xs font-bold uppercase hover:text-white" on:click={copyCode}>Copy</button>
                 </div>
                 <pre class="font-mono text-sm overflow-x-auto"><code><span class="text-sky-400">const</span> <span class="text-yellow-300">portfolio</span> = <span class="text-sky-400">new</span> <span class="text-green-400">Awesome</span>();
-portfolio.<span class="text-purple-400">init</span>({
+portfolio.<span class="text-purple-400">init</span>(&#123;
   design: <span class="text-orange-400">"Modern Z"</span>,
   performance: <span class="text-orange-400">"100%"</span>
-});</code></pre>
+&#125;);</code></pre>
             </div>
         </div>
 
-        <!-- Column 2: Media & Resume -->
         <div class="flex flex-col justify-center space-y-6">
             <div class="relative group cursor-pointer overflow-hidden rounded-2xl bg-black" on:click={() => showVideo = true}>
                 <img src="/images/hero-illustration.png" alt="Video Thumb" class="h-48 w-full object-cover opacity-60 transition group-hover:opacity-40" />
@@ -79,7 +80,6 @@ portfolio.<span class="text-purple-400">init</span>({
         </div>
     </div>
 
-    <!-- Modals -->
     <Modal isOpen={showVideo} onClose={() => showVideo = false}>
         <div class="aspect-video w-full bg-black">
              <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
