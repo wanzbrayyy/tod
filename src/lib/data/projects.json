@@ -1,0 +1,26 @@
+[
+	{
+		"id": 1,
+		"title": "sistem Manajemen Aset",
+		"category": "web application",
+		"description": "platform berbasis cloud untuk pelacakan aset perusahaan secara real-time dengan dashboard analitik.",
+		"image": "/images/projects/project-1-thumb.jpg",
+		"link": "#"
+	},
+	{
+		"id": 2,
+		"title": "aplikasi finansial pribadi",
+		"category": "mobile UI/UX",
+		"description": "desain antarmuka aplikasi pencatatan keuangan dengan fokus pada kemudahan penggunaan dan visualisasi data.",
+		"image": "/images/projects/project-2-thumb.jpg",
+		"link": "#"
+	},
+	{
+		"id": 3,
+		"title": "landing page perusahaan",
+		"category": "frontend development",
+		"description": "website profil perusahaan modern dengan animasi halus dan performa tinggi menggunakan Svelte.",
+		"image": "/images/projects/project-3-thumb.jpg",
+		"link": "#"
+	}
+]
