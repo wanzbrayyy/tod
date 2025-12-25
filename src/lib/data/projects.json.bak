@@ -11,11 +11,11 @@
 	},
 	{
 		"id": 2,
-		"slug": "aplikasi-doxxing",
-		"title": "aplikasi doxxing",
-		"category": "mobile UI/UX",
-		"description": "mengembangkan aplikasi doxxing mencari data data sensitif dan dapat mendapatkan password wifi (membutuhkan kabel router).",
-		"content": "<p>Fokus utama adalah mencari data email, nik, nama lengkap hingga alamat.</p>",
+		"slug": "aplikasi-finansial",
+		"title": "Aplikasi Finansial Pribadi",
+		"category": "Mobile UI/UX",
+		"description": "Desain antarmuka aplikasi pencatatan keuangan dengan fokus pada kemudahan penggunaan dan visualisasi data.",
+		"content": "<p>Fokus utama adalah UX yang frictionless agar pengguna rajin mencatat pengeluaran. Desain menggunakan pendekatan Clean UI.</p>",
 		"image": "/images/projects/project-2-thumb.jpg",
 		"link": "#"
 	},
@@ -24,7 +24,7 @@
 		"slug": "landing-page-corp",
 		"title": "Landing Page Perusahaan",
 		"category": "Frontend Development",
-		"description": "Website profil perusahaan modern dengan animasi halus dan performa tinggi menggunakan php.",
+		"description": "Website profil perusahaan modern dengan animasi halus dan performa tinggi menggunakan Svelte.",
 		"content": "<p>Redesign total website korporat untuk meningkatkan konversi dan brand image. Score Lighthouse mencapai 100.</p>",
 		"image": "/images/projects/project-3-thumb.jpg",
 		"link": "#"
