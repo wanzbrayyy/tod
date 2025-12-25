@@ -1,5 +1,5 @@
 <script>
-    import { language, isSearchOpen } from '$lib/stores';
+    import { language, isSearchOpen, theme } from '$lib/stores';
     import { scrollToSection } from '$lib/utils/scrollSmooth';
 
     let isScrolled = false;
@@ -29,6 +29,11 @@
     const toggleLang = () => {
         language.update(l => l === 'id' ? 'en' : 'id');
     };
+    
+    // Fungsi baru untuk toggle Dark Mode
+    const toggleTheme = () => {
+        theme.update(t => t === 'dark' ? 'light' : 'dark');
+    };
 
     const openSearch = () => {
         isMobileMenuOpen = false;
@@ -38,62 +43,79 @@
 
 <svelte:window on:scroll={handleScroll} />
 
-<nav class={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/80 backdrop-blur-md border-b border-slate-200/50 py-3 shadow-sm' : 'bg-transparent py-6'}`}>
+<nav class={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md border-b border-slate-200/50 dark:border-white/10 py-3 shadow-sm' : 'bg-transparent py-6'}`}>
     <div class="container mx-auto flex items-center justify-between px-6 lg:px-12">
         <div class="flex items-center gap-4">
-            <a href="/" class="relative z-50 text-2xl font-bold tracking-tight text-slate-900">
+            <a href="/" class="relative z-50 text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
                 Awan<span class="text-sky-500">.</span>
             </a>
             
-            <div class="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white/50 px-3 py-1 backdrop-blur-sm">
+            <!-- Status Indicator (Premium Dark Mode Support) -->
+            <div class="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5 px-3 py-1 backdrop-blur-sm">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
-                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Available for Work</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Available for Work</span>
             </div>
         </div>
 
-        <div class="hidden md:flex items-center space-x-8">
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-6">
             {#each navLinks as link}
                 <button 
                     on:click={() => handleNavClick(link.id)}
-                    class="text-sm font-medium text-slate-600 transition-colors hover:text-sky-600"
+                    class="text-sm font-medium text-slate-600 dark:text-slate-400 transition-colors hover:text-sky-600 dark:hover:text-white"
                 >
                     {link.name}
                 </button>
             {/each}
 
-            <div class="flex items-center gap-4 pl-4 border-l border-slate-200">
+            <div class="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-white/10">
+                <!-- Search Button -->
                 <button 
                     on:click={openSearch} 
-                    class="group flex h-8 w-8 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-900"
+                    class="group flex h-8 w-8 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white"
                     aria-label="Search"
                 >
-                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
 
+                <!-- Theme Toggle Button (New) -->
+                <button 
+                    on:click={toggleTheme} 
+                    class="group flex h-8 w-8 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 dark:hover:bg-white/10 hover:text-yellow-500 dark:hover:text-yellow-300"
+                    aria-label="Toggle Theme"
+                >
+                    {#if $theme === 'dark'}
+                        <i class="fa-solid fa-sun"></i>
+                    {:else}
+                        <i class="fa-solid fa-moon"></i>
+                    {/if}
+                </button>
+
+                <!-- Language Button -->
                 <button 
                     on:click={toggleLang} 
-                    class="text-xs font-bold uppercase tracking-wide text-slate-900 transition-colors hover:text-sky-600"
+                    class="text-xs font-bold uppercase w-6 tracking-wide text-slate-900 dark:text-white transition-colors hover:text-sky-600"
                 >
                     {$language}
                 </button>
             </div>
             
+            <!-- Resume Button -->
             <a 
                 href="/resume.pdf" 
                 target="_blank"
-                class="rounded-full bg-slate-900 px-5 py-2.5 text-xs font-bold text-white transition-all hover:bg-slate-800 hover:-translate-y-0.5 hover:shadow-lg"
+                class="rounded-full bg-slate-900 dark:bg-white px-5 py-2.5 text-xs font-bold text-white dark:text-black transition-all hover:bg-slate-800 dark:hover:bg-slate-200 hover:-translate-y-0.5 hover:shadow-lg"
             >
-                Resume
+                Resume <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
             </a>
         </div>
 
+        <!-- Mobile Menu Toggle -->
         <button 
-            class="relative z-50 md:hidden p-2 text-slate-900 focus:outline-none" 
+            class="relative z-50 md:hidden p-2 text-slate-900 dark:text-white focus:outline-none" 
             on:click={toggleMenu}
             aria-label="Toggle Menu"
         >
@@ -105,29 +127,41 @@
         </button>
     </div>
 
-    <div class={`fixed inset-0 z-40 bg-white transition-transform duration-500 md:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+    <!-- Mobile Menu Overlay -->
+    <div class={`fixed inset-0 z-40 bg-white dark:bg-[#0a0a0a] transition-transform duration-500 md:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div class="flex h-full flex-col justify-center px-8 space-y-8">
             {#each navLinks as link}
                 <button 
                     on:click={() => handleNavClick(link.id)}
-                    class="text-left text-2xl font-bold text-slate-900 hover:text-sky-600"
+                    class="text-left text-2xl font-bold text-slate-900 dark:text-white hover:text-sky-600"
                 >
                     {link.name}
                 </button>
             {/each}
 
-            <div class="h-px w-full bg-slate-100"></div>
+            <div class="h-px w-full bg-slate-100 dark:bg-white/10"></div>
 
-            <div class="flex items-center gap-6">
-                <button on:click={openSearch} class="flex items-center gap-2 text-lg font-medium text-slate-600">
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                    Cari
-                </button>
-                <button on:click={toggleLang} class="text-lg font-bold uppercase text-slate-900">
+            <div class="flex items-center justify-between gap-6">
+                <div class="flex gap-4">
+                    <button on:click={openSearch} class="flex items-center gap-2 text-lg font-medium text-slate-600 dark:text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass"></i> Cari
+                    </button>
+                    <button on:click={toggleTheme} class="flex items-center gap-2 text-lg font-medium text-slate-600 dark:text-slate-400">
+                        {#if $theme === 'dark'}
+                            <i class="fa-solid fa-sun text-yellow-400"></i> Light
+                        {:else}
+                            <i class="fa-solid fa-moon text-slate-600"></i> Dark
+                        {/if}
+                    </button>
+                </div>
+                <button on:click={toggleLang} class="text-lg font-bold uppercase text-slate-900 dark:text-white">
                     {$language}
                 </button>
             </div>
-             <a href="/resume.pdf" class="inline-flex w-full justify-center rounded-xl bg-slate-900 py-4 text-center font-bold text-white">Download Resume</a>
+
+             <a href="/resume.pdf" class="inline-flex w-full justify-center rounded-xl bg-slate-900 dark:bg-white py-4 text-center font-bold text-white dark:text-black">
+                Download Resume
+             </a>
         </div>
     </div>
 </nav>
