@@ -14,9 +14,11 @@
 		"node": "20.x"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-vercel": "^5.0.0", 
+		"@sveltejs/adapter-vercel": "^5.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@tailwindcss/typography": "^0.5.10",
+		"@types/node": "^20.0.0",
 		"autoprefixer": "^10.4.16",
 		"postcss": "^8.4.32",
 		"prettier": "^3.1.1",
